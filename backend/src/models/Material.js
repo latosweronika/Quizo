@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const answerSchema = new mongoose.Schema({
     text: {
@@ -51,8 +51,9 @@ const materialSchema = new mongoose.Schema({
     },
 
     category: {
-        type: String,
-        default: "General",
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category",
+        required: true
     },
 
     questions : [questionSchema],
@@ -66,4 +67,5 @@ const materialSchema = new mongoose.Schema({
     },
     {timestamps: true});
 
-module.exports = mongoose.model("Material", materialSchema);
+const Material = mongoose.model("Material", materialSchema);
+export default Material;

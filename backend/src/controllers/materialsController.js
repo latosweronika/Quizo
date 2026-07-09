@@ -1,6 +1,6 @@
-const Material = require("../models/Material");
+import Material from "../models/Material.js";
 
-exports.createMaterial = async (req, res) => {
+export const createMaterial = async (req, res) => {
     try {
         const material = await Material.create(req.body);
         res.status(201).json(material);
@@ -9,7 +9,7 @@ exports.createMaterial = async (req, res) => {
     }
 };
 
-exports.getAllMaterials = async (req, res) => {
+export const getAllMaterials = async (req, res) => {
     try {
         const materials = await Material.find()
             .populate("category")
@@ -21,7 +21,7 @@ exports.getAllMaterials = async (req, res) => {
     }
 };
 
-exports.getMaterial = async (req, res) => {
+export const getMaterial = async (req, res) => {
     try {
         const material = await Material.findById(req.params.id);
         res.json(material);
@@ -30,7 +30,7 @@ exports.getMaterial = async (req, res) => {
     }
 };
 
-exports.updateMaterial = async (req, res) => {
+export const updateMaterial = async (req, res) => {
     try {
         const material = await Material.findByIdAndUpdate(
             req.params.id,
@@ -43,7 +43,7 @@ exports.updateMaterial = async (req, res) => {
     }
 };
 
-exports.deleteMaterial = async (req, res) => {
+export const deleteMaterial = async (req, res) => {
     try {
         const material = await Material.findByIdAndDelete(req.params.id);
         res.json(material);

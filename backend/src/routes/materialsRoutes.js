@@ -1,15 +1,14 @@
-const express = require("express");
+import express from "express";
+import { auth } from "../middleware/auth.js";
+import * as materialsController from "../controllers/materialsController.js";
+
+
 const router = express.Router();
-const materialsController = require("../controllers/materialsController");
-const { auth } = require("../middleware/auth");
 
 router.get("/", auth, materialsController.getAllMaterials);
-router.get("/:id", auth, materialsController.getMaterialById);
-
+router.get("/:id", auth, materialsController.getMaterial);
 router.post("/", auth, materialsController.createMaterial);
-
 router.put("/:id", auth, materialsController.updateMaterial);
-
 router.delete("/:id", auth, materialsController.deleteMaterial);
 
-module.exports = router;
+export default router;

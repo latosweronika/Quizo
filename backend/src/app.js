@@ -1,6 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
+import cors from "cors";
+
+import userRoutes from "./routes/userRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
+import materialsRoutes from "./routes/materialsRoutes.js";
+import categoriesRoutes from "./routes/categoriesRoutes.js";    
+import resultRoutes from "./routes/resultRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -18,11 +25,14 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.send("API is running");
 });
-app.use("/auth", require("./routes/authRoutes.js"));
-app.use("/materials", require("./routes/materialsRoutes.js"));
-app.use("/categories", require("./routes/categoriesRoutes.js"));
-app.use("/results", require("./routes/resultsRoutes.js"));
-app.use("/users", require("./routes/userRoutes.js"));
+app.get("/abc", (req, res) => {
+    res.send("abc");
+});
+app.use("/auth", authRoutes);
+app.use("/materials", materialsRoutes);
+app.use("/categories", categoriesRoutes);
+app.use("/result", resultRoutes);
+app.use("/user", userRoutes);
 
 const PORT = process.env.PORT || 3000;
 
