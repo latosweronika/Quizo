@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../sevices/api";
 import { Link } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 
 import Card from "../components/ui/Card";
 import Input from "../components/ui/Input";
@@ -14,6 +15,8 @@ function Sigin() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    
+  const [ showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
 
@@ -60,7 +63,7 @@ function Sigin() {
         />
         <Input
           label="Password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           value={password}
           onChange={e => setPassword(e.target.value)}
         />

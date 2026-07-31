@@ -3,9 +3,9 @@ function Card({ children, className = "" }) {
     <div
       className={`
         rounded-2xl
-        bg-white
         p-8
         shadow-md
+        style={{ backgroundColor: "var(--card)" }}
         ${className}
       `}
     >

@@ -1,8 +1,7 @@
-import { useState, useContext} from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect} from "react";
+import { useNavigate, Link } from "react-router-dom";
 import api from "../sevices/api";
 import { AuthContext } from "../context/AuthContext";
-import { Link } from "react-router-dom";
 
 import Card from "../components/ui/Card";
 import Input from "../components/ui/Input";
@@ -19,6 +18,10 @@ function Login() {
   const { loadUser} = useContext(AuthContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.documentElement.className = "";
+  },[]);
+  
   async function handleLogin(e){
     e.preventDefault();
     setError("");
