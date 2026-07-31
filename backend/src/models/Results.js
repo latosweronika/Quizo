@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const resultsSchema = new mongoose.Schema({
     userId: {
@@ -15,4 +15,5 @@ const resultsSchema = new mongoose.Schema({
     date: Date
 });
 
-module.exports = mongoose.model("Results", resultsSchema);
+const Results = mongoose.model("Results", resultsSchema);
+export default Results;
